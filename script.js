@@ -318,10 +318,11 @@
   const reviewsPrevious = $('#reviewsPrevious');
   const reviewsNext = $('#reviewsNext');
   const reviewsCount = $('#reviewsCount');
-  reviewsEmpty.hidden = reviews.length > 0;
-  reviewsSection.hidden = reviews.length === 0;
+  const reviewCount = reviewsGrid.children.length || reviews.length;
+  reviewsEmpty.hidden = reviewCount > 0;
+  reviewsSection.hidden = reviewCount === 0;
 
-  reviews.forEach((item, index) => {
+  if (!reviewsGrid.children.length) reviews.forEach((item, index) => {
     const figure = document.createElement('figure');
     figure.className = 'review-card reveal';
     figure.setAttribute('role', 'group');
