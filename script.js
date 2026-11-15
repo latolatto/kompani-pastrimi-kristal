@@ -264,8 +264,8 @@
   const videoWarmup = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      // Metadata is enough to prepare playback without downloading every clip.
-      entry.target.preload = 'metadata';
+      // Buffer the clip before it enters view; visible clips autoplay while muted.
+      entry.target.preload = 'auto';
       videoWarmup.unobserve(entry.target);
     });
   }, {rootMargin:'300px 0px'}) : null;
