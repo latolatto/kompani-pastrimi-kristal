@@ -1148,3 +1148,5 @@ html { scroll-padding-top: calc(var(--header) + var(--contact-bar-height) + 14px
 @media (max-width: 760px) {
   .instagram-feed-section .instagram-feed-intro { margin-bottom: 18px; }
 }
+/* Keep footer arrow icons aligned with link text across iOS browsers. */
+.site-footer .footer-links a .arrow { display: inline-block; vertical-align: middle; width: 14px; height: 14px; margin-left: 4px; }

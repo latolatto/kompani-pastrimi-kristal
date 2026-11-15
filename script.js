@@ -253,12 +253,23 @@
   function syncVideoPlayback(player) {
     const {video} = player;
     if (document.hidden || !player.visible || player.manuallyPaused) {
+      video.autoplay = false;
+      video.removeAttribute('autoplay');
       video.pause();
       return;
     }
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    ['autoplay','muted','playsinline','webkit-playsinline'].forEach(attribute => video.setAttribute(attribute,''));
     video.play().then(() => {
       // A pending play request can resolve after the visitor scrolls away.
-      if (document.hidden || !player.visible || player.manuallyPaused) video.pause();
+      if (document.hidden || !player.visible || player.manuallyPaused) {
+        video.autoplay = false;
+        video.removeAttribute('autoplay');
+        video.pause();
+      }
     }).catch(player.update);
   }
   const videoWarmup = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
@@ -283,8 +294,7 @@
     const video = frame.querySelector('video') || document.createElement('video');
     video.preload = 'none'; video.muted = true; video.defaultMuted = true; video.autoplay = false; video.loop = true; video.playsInline = true; video.controls = false;
     video.removeAttribute('autoplay');
-    ['muted','loop','playsinline'].forEach(attribute => video.setAttribute(attribute,''));
-    video.setAttribute('loading','lazy');
+    ['muted','loop','playsinline','webkit-playsinline'].forEach(attribute => video.setAttribute(attribute,''));
     if (video.getAttribute('src') !== item.src) video.src = item.src;
     if (item.poster) video.poster = item.poster;
     video.setAttribute('aria-label', item.title + ' — Kompani Pastrimi Kristal');
@@ -294,11 +304,11 @@
     videoPlayers.set(video,player);
     play.addEventListener('click',async () => {
       player.manuallyPaused = !video.paused;
-      if (player.manuallyPaused) { video.pause(); return; }
+      if (player.manuallyPaused) { video.autoplay = false; video.removeAttribute('autoplay'); video.pause(); return; }
       try { await video.play(); } catch { showVideoError(); }
     });
     video.addEventListener('play',updatePlaybackControl); video.addEventListener('pause',updatePlaybackControl);
-    function showVideoError() { if (frame.querySelector('.video-error')) return; const error = document.createElement('a'); error.className = 'video-error'; error.href = 'https://www.instagram.com/explore/tags/pastrim/'; error.target = '_blank'; error.rel = 'noopener'; error.textContent = 'Shihni videot në Instagram ↗'; frame.append(error); }
+    function showVideoError() { if (frame.querySelector('.video-error')) return; const error = document.createElement('a'); error.className = 'video-error'; error.href = 'https://www.instagram.com/explore/tags/pastrim/'; error.target = '_blank'; error.rel = 'noopener'; error.textContent = 'Shihni videot në Instagram '; const arrow = document.createElementNS('http://www.w3.org/2000/svg','svg'); arrow.setAttribute('class','arrow'); arrow.setAttribute('aria-hidden','true'); const use = document.createElementNS('http://www.w3.org/2000/svg','use'); use.setAttribute('href','#arrow-up'); arrow.append(use); error.append(arrow); frame.append(error); }
     video.addEventListener('error',showVideoError);
     frame.append(video,play);
     const caption = figure.querySelector('figcaption') || document.createElement('figcaption');
