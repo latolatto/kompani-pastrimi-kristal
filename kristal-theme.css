@@ -895,17 +895,20 @@ html { scroll-padding-top: calc(var(--header) + var(--contact-bar-height) + 14px
 .hero-image {
   animation: none !important;
   opacity: 1 !important;
+  visibility: visible !important;
   transform: none !important;
 }
 .hero-content > * {
-  animation: none !important;
+  animation: bannerFadeUpVisible .85s cubic-bezier(.2,.7,.2,1) both;
   opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
+  visibility: visible !important;
+  transform: none;
+  filter: none;
 }
 .hero-content > h1 > span {
   animation: none !important;
   opacity: 1 !important;
+  visibility: visible !important;
   transform: none !important;
   filter: none !important;
 }
@@ -1088,3 +1091,60 @@ html { scroll-padding-top: calc(var(--header) + var(--contact-bar-height) + 14px
 .reviews-grid > .review-card::after { content: none !important; display: none !important; }
 /* Give the desktop navigation links a little more breathing room. */
 @media (min-width: 961px) { .site-nav { column-gap: 30px; } }
+
+/* Fade-up banner entrance, starting visible enough for LCP detection. */
+@keyframes bannerFadeUpVisible {
+  from { opacity: 1; transform: translateY(12px); filter: none; }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.hero-content > .eyebrow { animation-delay: 0s; }
+.hero-content > h1 { animation-delay: .08s; }
+.hero-content > .hero-copy { animation-delay: .16s; }
+.hero-content > .hero-actions { animation-delay: .24s; }
+.hero-content > .hero-selector { animation-delay: .32s; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > * { animation: none !important; opacity: 1; transform: none; filter: none; }
+}
+
+/* Instagram feed shares the work-video section, with a short text bridge. */
+.instagram-feed-block {
+  margin-top: 58px;
+  padding-top: 34px;
+  border-top: 1px solid #dce3ed;
+}
+.instagram-feed-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+.instagram-feed-intro h3 {
+  margin-top: 12px;
+  font-size: clamp(25px, 3vw, 36px);
+  letter-spacing: -.035em;
+}
+.instagram-feed-intro p {
+  max-width: 40ch;
+  font-size: 12px;
+}
+.elfsight-app-c20feeff-9e70-4f94-bc57-5bc5c0a1a0a8 {
+  min-height: 220px;
+  width: 100%;
+}
+@media (max-width: 760px) {
+  .instagram-feed-block { margin-top: 42px; padding-top: 27px; }
+  .instagram-feed-intro { display: block; margin-bottom: 18px; }
+  .instagram-feed-intro p { margin-top: 13px; }
+}
+/* The Instagram feed now sits in its own calm section beneath client reviews. */
+.instagram-feed-section { background: #f3f5f9; }
+.instagram-feed-section .instagram-feed-block {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.instagram-feed-section .instagram-feed-intro { margin-bottom: 25px; }
+@media (max-width: 760px) {
+  .instagram-feed-section .instagram-feed-intro { margin-bottom: 18px; }
+}
