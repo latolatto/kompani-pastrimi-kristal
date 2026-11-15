@@ -202,19 +202,18 @@
   display: grid; grid-template-rows: 76px; align-content: center; justify-items: center;
   gap: 0; width: 204px; min-height: 132px; margin: 0; padding: 12px 14px 10px;
   border: 1px solid #e0e6ed; border-radius: 14px; background: #fbfcfe;
-  box-shadow: 0 6px 20px #67717c22;
 }
 .partner-logo-window { display: grid; place-items: center; width: 100%; height: 76px; overflow: hidden; }
 .partner-logo-window img {
   display: block; width: 100%; height: 100%; max-width: 100%; max-height: 100%;
-  object-fit: contain; filter: grayscale(1) drop-shadow(0 4px 4px #68727c66);
+  object-fit: contain; filter: none;
   transform: scale(1.12); transform-origin: center;
   transition: filter .25s ease;
 }
 
 .partner-tile:hover img,
 .partner-tile:focus-visible img,
-.partner-tile.is-color img { filter: drop-shadow(0 4px 4px #68727c66); }
+.partner-tile.is-color img { filter: none; }
 .partner-tile:focus-visible { outline: 2px solid #718bad; outline-offset: 3px; }
 @keyframes kristal-partner-loop { to { transform: translateX(-50%); } }
 
@@ -743,3 +742,349 @@ html { scroll-padding-top: calc(var(--header) + var(--contact-bar-height) + 14px
   .header-contact-inner a { gap: 4px; font-size: 8px; }
   .header-social-links { gap: 5px; padding-left: 6px; }
 }
+
+/* Quiet, editorial review cards: equal surfaces, clear type, restrained quote mark. */
+.reviews-grid > .review-card:nth-child(n) {
+  min-height: 220px;
+  padding: 34px 30px 30px;
+  border: 1px solid #e3e6e9;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 5px 18px #1d34490a;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.reviews-grid > .review-card:nth-child(n)::before {
+  content: '“';
+  top: 13px;
+  right: 17px;
+  color: #b7a16c;
+  font-size: 58px;
+  line-height: 1;
+  opacity: .24;
+}
+.reviews-grid > .review-card:nth-child(n)::after { display: none; }
+.reviews-grid > .review-card:first-child {
+  border-color: #e3e6e9;
+  background: #fff;
+  box-shadow: 0 5px 18px #1d34490a;
+}
+.reviews-grid > .review-card:hover {
+  transform: none;
+  border-color: #cbd2d9;
+  box-shadow: 0 8px 22px #1d344910;
+}
+.reviews-grid > .review-card blockquote,
+.reviews-grid > .review-card:first-child blockquote {
+  max-width: 38ch;
+  color: #354253;
+  font-size: clamp(18px, 1.35vw, 20px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -.008em;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n) { min-height: 190px; padding: 29px 24px 25px; border-radius: 12px; }
+  .reviews-grid > .review-card blockquote,
+  .reviews-grid > .review-card:first-child blockquote { font-size: 19px; }
+}
+/* Refined client-review cards: restrained color, clear hierarchy, and an editorial detail. */
+.reviews-grid > .review-card:nth-child(n) {
+  min-height: 220px;
+  padding: 78px 30px 30px;
+  border: 1px solid #e2e6eb;
+  border-radius: 17px;
+  background: radial-gradient(circle at 100% 0%, #edf2f8 0, transparent 45%), linear-gradient(145deg, #fff 0%, #f9fafc 100%);
+  box-shadow: inset 0 2px #b9a36d, 0 12px 30px #1d35680b;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.reviews-grid > .review-card:nth-child(n)::before {
+  content: '“';
+  position: absolute;
+  z-index: 1;
+  top: 23px;
+  right: auto;
+  left: 27px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e6dfd0;
+  border-radius: 50%;
+  background: #fbf9f4;
+  color: #a58a51;
+  font: 400 31px/1 Georgia, serif;
+  opacity: .92;
+}
+.reviews-grid > .review-card:nth-child(n)::after {
+  content: 'PËRSHTYPJE KLIENTI';
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 36px;
+  right: 27px;
+  color: #8390a0;
+  font: 400 8px/1.4 var(--mono);
+  letter-spacing: .12em;
+}
+.reviews-grid > .review-card:first-child {
+  border-color: #e2e6eb;
+  background: radial-gradient(circle at 100% 0%, #edf2f8 0, transparent 45%), linear-gradient(145deg, #fff 0%, #f9fafc 100%);
+  box-shadow: inset 0 2px #b9a36d, 0 12px 30px #1d35680b;
+}
+.reviews-grid > .review-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd4df;
+  box-shadow: inset 0 2px #b9a36d, 0 17px 36px #1d356815;
+}
+.reviews-grid > .review-card blockquote,
+.reviews-grid > .review-card:first-child blockquote {
+  position: relative;
+  z-index: 2;
+  max-width: 38ch;
+  color: #354253;
+  font-size: clamp(18px, 1.35vw, 20px);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -.008em;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n) { min-height: 190px; padding: 72px 24px 25px; border-radius: 14px; }
+  .reviews-grid > .review-card:nth-child(n)::before { left: 21px; top: 20px; }
+  .reviews-grid > .review-card:nth-child(n)::after { right: 21px; top: 34px; font-size: 7px; }
+  .reviews-grid > .review-card blockquote,
+  .reviews-grid > .review-card:first-child blockquote { font-size: 19px; }
+}
+/* Keep reviews understated and let the customer's words carry the emphasis. */
+.reviews-grid > .review-card:nth-child(n) {
+  min-height: 195px;
+  padding: 27px 27px 25px;
+  border: 1px solid #e2e6eb;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff 0%, #f8f9fb 100%);
+  box-shadow: 0 6px 20px #1d35680a;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.reviews-grid > .review-card:nth-child(n)::before,
+.reviews-grid > .review-card:nth-child(n)::after { content: none; display: none; }
+.reviews-grid > .review-card:first-child {
+  border-color: #e2e6eb;
+  background: linear-gradient(145deg, #fff 0%, #f8f9fb 100%);
+  box-shadow: 0 6px 20px #1d35680a;
+}
+.reviews-grid > .review-card:hover {
+  transform: none;
+  border-color: #ccd5df;
+  box-shadow: 0 9px 24px #1d356810;
+}
+.reviews-grid > .review-card blockquote,
+.reviews-grid > .review-card:first-child blockquote {
+  max-width: 40ch;
+  color: #3e4b5a;
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n) { min-height: 165px; padding: 25px 22px; border-radius: 11px; }
+  .reviews-grid > .review-card blockquote,
+  .reviews-grid > .review-card:first-child blockquote { font-size: 16px; }
+}
+
+/* Leave the first-screen content visible at first paint so Lighthouse can record LCP. */
+.hero-image {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+.hero-content > * {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+.hero-content > h1 > span {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+.hero-content > h1 > .lit {
+  animation: headlineShine 2.6s .8s ease-in-out both !important;
+}
+/* Final review card refinement: composed, modest, and focused on the review copy. */
+.reviews-grid > .review-card:nth-child(n) {
+  min-height: 205px;
+  padding: 65px 29px 27px;
+  border: 1px solid #e1e5eb;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #fff 0%, #fbfbfa 58%, #f4f6fa 100%);
+  box-shadow: inset 0 2px #c5b27f, 0 10px 26px #1d35680c;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.reviews-grid > .review-card:nth-child(n)::before {
+  content: '“';
+  display: block;
+  position: absolute;
+  top: 17px;
+  right: 23px;
+  left: auto;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #a8915c;
+  font: 400 42px/.9 Georgia, serif;
+  opacity: .58;
+}
+.reviews-grid > .review-card:nth-child(n)::after {
+  content: 'PËRSHTYPJE';
+  display: block;
+  position: absolute;
+  top: 29px;
+  right: auto;
+  left: 28px;
+  color: #7c8999;
+  font: 400 8px/1.4 var(--mono);
+  letter-spacing: .14em;
+}
+.reviews-grid > .review-card:first-child {
+  border-color: #e1e5eb;
+  background: linear-gradient(145deg, #fff 0%, #fbfbfa 58%, #f4f6fa 100%);
+  box-shadow: inset 0 2px #c5b27f, 0 10px 26px #1d35680c;
+}
+.reviews-grid > .review-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd4df;
+  box-shadow: inset 0 2px #c5b27f, 0 15px 32px #1d356812;
+}
+.reviews-grid > .review-card blockquote,
+.reviews-grid > .review-card:first-child blockquote {
+  max-width: 40ch;
+  color: #3c4b5c;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.68;
+  letter-spacing: .002em;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n) { min-height: 175px; padding: 60px 23px 24px; border-radius: 12px; }
+  .reviews-grid > .review-card:nth-child(n)::after { left: 22px; top: 25px; }
+  .reviews-grid > .review-card:nth-child(n)::before { right: 19px; top: 15px; font-size: 38px; }
+  .reviews-grid > .review-card blockquote,
+  .reviews-grid > .review-card:first-child blockquote { font-size: 15px; }
+}
+/* Requested review details: quotation marks and five stars, without labels or accent rules. */
+.reviews-grid > .review-card:nth-child(n) {
+  box-shadow: 0 8px 24px #1d35680b;
+}
+.reviews-grid > .review-card:nth-child(n)::before {
+  content: '“”';
+  top: 18px;
+  left: 24px;
+  right: auto;
+  color: #77869a;
+  font: 400 31px/1 Georgia, serif;
+  opacity: .7;
+}
+.reviews-grid > .review-card:nth-child(n)::after {
+  content: '★★★★★';
+  top: 27px;
+  right: 24px;
+  left: auto;
+  color: #b79a5d;
+  font: 400 13px/1 var(--body);
+  letter-spacing: .16em;
+}
+.reviews-grid > .review-card:first-child {
+  box-shadow: 0 8px 24px #1d35680b;
+}
+.reviews-grid > .review-card:hover {
+  box-shadow: 0 12px 28px #1d356812;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n)::before { left: 21px; top: 17px; }
+  .reviews-grid > .review-card:nth-child(n)::after { right: 20px; top: 26px; font-size: 12px; }
+}
+/* Review cards: navy frame, centered rating, quotes at opposite corners. */
+.reviews-grid > .review-card:nth-child(n) {
+  border: 1.5px solid #1d3568;
+  box-shadow: 0 8px 24px #1d35680b;
+}
+.reviews-grid > .review-card:first-child {
+  border-color: #1d3568;
+  box-shadow: 0 8px 24px #1d35680b;
+}
+.reviews-grid > .review-card:nth-child(n)::before {
+  content: '“';
+  top: 12px;
+  left: 17px;
+  right: auto;
+  color: #1d3568;
+  font: 400 31px/1 Georgia, serif;
+  opacity: .72;
+}
+.reviews-grid > .review-card:nth-child(n)::after {
+  content: '”';
+  top: auto;
+  right: 17px;
+  bottom: 8px;
+  left: auto;
+  color: #1d3568;
+  font: 400 31px/1 Georgia, serif;
+  letter-spacing: 0;
+}
+.reviews-grid > .review-card .review-stars {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #b29350;
+  font: 500 14px/1 var(--body);
+  letter-spacing: .14em;
+  white-space: nowrap;
+}
+.reviews-grid:focus-visible { outline: none; }
+.reviews-grid.is-dragging { outline: none !important; }
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n) { border-width: 1.5px; }
+  .reviews-grid > .review-card:nth-child(n)::before { top: 10px; left: 14px; }
+  .reviews-grid > .review-card:nth-child(n)::after { right: 14px; bottom: 6px; top: auto; }
+  .reviews-grid > .review-card .review-stars { top: 22px; font-size: 13px; }
+}
+
+/* Slightly larger type on the menu links only. */
+@media (min-width: 961px) {
+  .site-nav > a:not(.mobile-menu-cta) { font-size: 12px; }
+  .site-header .header-cta { font-size: 12px; }
+}
+@media (max-width: 960px) {
+  .site-nav > a:not(.mobile-menu-cta) { font-size: 19px; }
+  .site-nav > a.mobile-menu-cta { font-size: 15px; }
+}
+/* Preserve a visible keyboard focus cue; suppress it only during mouse dragging. */
+.reviews-grid:focus-visible:not(.is-dragging) { outline: 2px solid #6884b0; outline-offset: 4px; }
+
+/* More card depth without an inset colored rule; use a single, quiet closing quote. */
+.reviews-grid > .review-card:nth-child(n) {
+  box-shadow: 0 13px 30px #1d35681a, 0 2px 6px #1d35680c;
+}
+.reviews-grid > .review-card:first-child {
+  box-shadow: 0 13px 30px #1d35681a, 0 2px 6px #1d35680c;
+}
+.reviews-grid > .review-card:hover {
+  box-shadow: 0 18px 38px #1d356824, 0 3px 8px #1d356812;
+}
+.reviews-grid > .review-card:nth-child(n)::after {
+  content: '’';
+  font-size: 29px;
+  font-weight: 400;
+}
+@media (max-width: 760px) {
+  .reviews-grid > .review-card:nth-child(n)::after { font-size: 27px; }
+}
+/* The lower-right ::after mark created the unwanted vertical stroke; remove it. */
+.reviews-grid > .review-card::after { content: none !important; display: none !important; }
+/* Give the desktop navigation links a little more breathing room. */
+@media (min-width: 961px) { .site-nav { column-gap: 30px; } }

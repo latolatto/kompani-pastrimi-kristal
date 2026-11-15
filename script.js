@@ -330,7 +330,12 @@
     figure.setAttribute('aria-label', 'Përshtypja ' + (index + 1) + ' nga ' + reviews.length);
     const quote = document.createElement('blockquote');
     quote.textContent = item.text.trim();
-    figure.append(quote);
+    const rating = document.createElement('span');
+    rating.className = 'review-stars';
+    rating.setAttribute('role', 'img');
+    rating.setAttribute('aria-label', 'Vlerësim me pesë yje');
+    rating.textContent = '★★★★★';
+    figure.append(quote, rating);
     reviewsGrid.append(figure);
   });
 
@@ -361,7 +366,6 @@
     reviewDrag = { pointerId: event.pointerId, startX: event.clientX, startScroll: reviewsGrid.scrollLeft };
     reviewsGrid.classList.add('is-dragging');
     reviewsGrid.setPointerCapture(event.pointerId);
-    reviewsGrid.focus({ preventScroll: true });
     event.preventDefault();
   });
   reviewsGrid.addEventListener('pointermove', event => {

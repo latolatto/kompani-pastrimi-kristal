@@ -15,33 +15,7 @@
 @media(max-width:760px){.header-inner{gap:12px}.site-nav{padding-inline:20px}.site-nav a{font-size:18px}.hero-content{padding-bottom:290px}.hero-rays{left:100%;top:0;opacity:.65}.hero-pixels i:nth-child(n+4){display:none}.hero-atmosphere{background:repeating-radial-gradient(circle at 100% 0%,#e9b63812 0 1px,transparent 1px 85px),radial-gradient(ellipse at 100% 0%,#ffd46d38,transparent 60%)}.general-grid{grid-template-columns:1fr;gap:35px}.general-intro h2{font-size:43px;max-width:14ch}.general-intro>p{max-width:44ch}.general-gift{max-width:none;margin-block:25px}.general-note{max-width:none!important}.general-checklist{gap:0 22px}.general-checklist h3{font-size:19px}.general-checklist li{padding-block:22px;gap:10px}.general-checklist p{font-size:11px}.general-scope{font-size:10px}.comparison-grid{grid-template-columns:1fr;gap:30px}.comparison-intro h2{font-size:43px;margin-block:20px}.comparison-intro>p{max-width:39ch}.comparison-hint{margin-top:20px}.comparison-stage{aspect-ratio:1.05}.comparison-tag{top:15px;font-size:8px;padding:5px 9px}.tag-before{left:15px}.tag-after{right:15px}.comparison-figure figcaption{font-size:10px}.comparison-figure figcaption span{font-size:9px;max-width:23ch;text-align:right}.media-reference-note{font-size:7px;margin-top:12px}.video-grid{grid-template-columns:1fr 1fr;gap:24px 17px}.video-card:last-child:nth-child(odd){grid-column:1/-1;max-width:calc(50% - 8.5px);width:100%;margin-inline:auto}.video-frame{aspect-ratio:3/4}.video-play>span{width:47px;height:47px}.video-play svg{width:14px}.video-label{left:13px;top:13px;font-size:7px}.video-card h3{font-size:17px;line-height:1.2}.video-card figcaption{padding-top:14px;gap:9px}.video-card figcaption p{font-size:9px}.video-card figcaption>span{font-size:8px}.video-intro{margin-top:20px;max-width:38ch}.reviews-grid{grid-template-columns:1fr}.review-card{padding:26px}.review-card blockquote{font-size:22px}.reviews-empty{gap:18px;padding-block:27px}.reviews-empty h3{font-size:23px}.reviews-empty p{font-size:11px}.reviews-empty>svg{width:28px;height:28px}.reviews-empty>.review-quote{font-size:75px;height:45px}}
 @media(max-width:400px){.general-checklist{grid-template-columns:1fr}.general-checklist li{padding-block:19px}.general-checklist h3{font-size:20px}.general-checklist p{font-size:12px}.general-intro h2{font-size:40px}.video-grid{grid-template-columns:1fr;gap:32px}.video-card:last-child{grid-column:auto;max-width:none}.video-frame{aspect-ratio:4/4.6}.video-card h3{font-size:22px}.video-card figcaption p{font-size:10px}.video-play>span{width:58px;height:58px}.video-play svg{width:17px}.reviews-empty>svg{display:none}}
 @media(prefers-reduced-motion:reduce){.hero h1 .lit{background:none;color:var(--blue);-webkit-text-fill-color:currentColor}.hero-rays i{transform:rotate(var(--angle));opacity:var(--strength)}.hero-pixels i{opacity:.3;transform:rotate(45deg)}.hero-content>*{opacity:1;transform:none;filter:none}}
-/* Compact package navigation: two packages, one primary menu item. */
-.nav-packages{position:relative;flex-shrink:0}
-.nav-packages>summary{display:flex;align-items:center;gap:7px;list-style:none;cursor:pointer;white-space:nowrap;padding-block:10px;font-size:12px;line-height:1.7}
-.nav-packages>summary::-webkit-details-marker{display:none}
-.nav-packages>summary>svg{width:10px;height:7px;transition:transform .2s}
-.nav-packages[open]>summary>svg{transform:rotate(180deg)}
-.nav-packages[open]>summary,.nav-packages:has(a.active)>summary{color:var(--blue)}
-.package-menu{position:absolute;top:calc(100% + 14px);left:-24px;width:248px;padding:10px 20px;background:var(--paper);border:1px solid #dce3e8;border-radius:5px;box-shadow:0 15px 40px #102b5014}
-.site-nav .package-menu a{display:block;padding:14px 2px;white-space:normal}
-.site-nav .package-menu a+a{border-top:1px solid var(--line)}
-.site-nav .package-menu a:after{display:none}
-.package-menu strong{display:block;font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:-.025em}
-.package-menu span{display:block;font-size:10px;line-height:1.6;color:#6c8193;margin-top:5px}
-@media(min-width:961px){
-  .site-nav{display:flex;position:static;padding:0;background:transparent;border:0;box-shadow:none;max-height:none;overflow:visible;gap:27px;margin-left:auto}
-  .site-nav a{font-size:12px;padding-block:10px;font-family:var(--body);border:0}
-  .header-cta{display:inline-flex}.menu-toggle{display:none}
-}
-@media(max-width:960px){
-  .nav-packages{border-bottom:1px solid #e6ebee}
-  .nav-packages>summary{font:400 18px/1.7 var(--display);padding-block:12px;justify-content:space-between}
-  .package-menu{position:static;width:100%;padding:0 15px 10px;margin-bottom:8px;background:#edf3f6;border:0;border-radius:3px;box-shadow:none}
-  .site-nav .package-menu a{padding:13px 0;font-size:15px;border:0}
-  .package-menu strong{font-size:20px}.package-menu span{font-size:10px}
-}
 
-/* Keep the package names prominent and balanced at every breakpoint. */
 .general-intro #generalTitle{max-width:none}
 .package #packageTitle{max-width:none}
 /* Rounded video portraits, with a discreet pause control. */
